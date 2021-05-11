@@ -2,9 +2,8 @@
 const db = connect("mongodb://localhost:27017/mydb")
 
 
-db.urls.drop()
+db.app_url.drop()
 
-db.urls.insertMany([
+db.app_url.insertMany([
     { url: "www.google.com" },
-
 ])

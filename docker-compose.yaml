@@ -2,9 +2,9 @@ version: '3'
 services:
   
   db:
+    image: mongo:latest
     ports: 
         - 27017:27017
-    image: mongo:latest
     volumes:
       - "dbdata:/var/lib/mongodb/data"
       - "./db/seeds.js:/docker-entrypoint-initdb.d/seeds.js:ro"
