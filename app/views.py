@@ -26,10 +26,7 @@ def urls(req):
 #     }
 #     return render(req, 'test.html', {"url": newObj}) 
 
-def redirect(req, id):
-    print('******************')
-    print(id)
+def redirector(req, id):
     obj = Url.objects.get(_id=ObjectId(id))
-    url = obj.url
-    print(url)
-    return redirect(url)
+    response = redirect(obj.url)
+    return response
