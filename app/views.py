@@ -26,7 +26,7 @@ def urls(req):
 #     }
     # return render(req, 'test.html', {"url": newObj}) 
 
-def show(req, id):
+def redirect(req, id):
     obj = Url.objects.get(_id=ObjectId(id))
     response = redirect(obj.url)
     return response
