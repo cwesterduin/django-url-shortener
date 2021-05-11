@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=)#v8l^f(dyh8*c9hyyixq-5ip+^j*wy1h^-%ubdu(f)$18vwb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -98,7 +98,9 @@ DATABASES = {
         'USER': 'user',
         'PASSWORD': 'password',
         'CLIENT': {
-           'host': 'localhost:27017',
+           'host': 'mongodb://user:password@localhost:27017',
+
+
         }
     }
 }
