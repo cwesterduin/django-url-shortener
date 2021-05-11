@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Url
 from djongo import models
 from bson.objectid import ObjectId
@@ -16,13 +16,17 @@ def urls(req):
     newUrls = {'urls' : map(parseObjIds, urls)}
     return render(req, 'url.html', newUrls) 
 
-def show(req, id):
-    print('*************************')
-    print(id)
-    obj = Url.objects.get(_id=ObjectId(id))
-    newObj = {
-        "url": obj.url,
-        "mongo_id": obj._id
-    }
+# def show(req, id):
+#     print('*************************')
+#     print(id)
+#     obj = Url.objects.get(_id=ObjectId(id))
+#     newObj = {
+#         "url": obj.url,
+#         "mongo_id": obj._id
+#     }
+    # return render(req, 'test.html', {"url": newObj}) 
 
-    return render(req, 'test.html', {"url": newObj}) 
+def show(req, id):
+    obj = Url.objects.get(_id=ObjectId(id))
+    response = redirect(obj.url)
+    return response
