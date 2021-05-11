@@ -24,9 +24,12 @@ def urls(req):
 #         "url": obj.url,
 #         "mongo_id": obj._id
 #     }
-    # return render(req, 'test.html', {"url": newObj}) 
+#     return render(req, 'test.html', {"url": newObj}) 
 
 def redirect(req, id):
+    print('******************')
+    print(id)
     obj = Url.objects.get(_id=ObjectId(id))
-    response = redirect(obj.url)
-    return response
+    url = obj.url
+    print(url)
+    return redirect(url)

@@ -74,30 +74,11 @@ WSGI_APPLICATION = 'url_shortener.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo', # default is sqlite3
-#         'NAME': 'mydb', # default is BASE_DIR / 'db.sqlite3'
-#         'USER': 'user', # update accordingly if appropriate
-#         'PORT': 27017, # 5432 is postgres default
-#         'HOST': 'localhost', # update accordingly if not running db locally
-#         'PASSWORD': 'password', # update accordingly if password protected
-#     }
-# }
 DATABASES = {
     'default': {
         'ENFORCE_SCHEMA': False,
         'ENGINE': 'djongo',
-        'NAME': 'mydb6',
-        'USER': 'user',
-        'PASSWORD': 'password',
+        'NAME': 'mydb',
         'CLIENT': {
            'host': 'mongodb://user:password@localhost:27017',
 
