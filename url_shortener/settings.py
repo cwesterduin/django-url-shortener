@@ -93,8 +93,9 @@ WSGI_APPLICATION = 'url_shortener.wsgi.application'
 # }
 DATABASES = {
     'default': {
+        'ENFORCE_SCHEMA': False,
         'ENGINE': 'djongo',
-        'NAME': 'mydb',
+        'NAME': 'mydb6',
         'USER': 'user',
         'PASSWORD': 'password',
         'CLIENT': {

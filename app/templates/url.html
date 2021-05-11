@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Here are our urls!</h1>
+<ul>
+    {% for url in urls %}
+    <li>
+        <div>
+            {{ url.url }} {{ url.mongo_id }}
+        </div>
+    </li>
+    {% endfor %}
+
+</ul>
+
+{% endblock content %}
