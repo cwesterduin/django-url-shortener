@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Url
+from djongo import models
+from bson.objectid import ObjectId
 
 # Create your views here.
 def parseObjIds(a):
@@ -10,5 +12,17 @@ def parseObjIds(a):
 
 def urls(req):
     urls = list(Url.objects.all().values('url', '_id'))
+    print(urls)
     newUrls = {'urls' : map(parseObjIds, urls)}
     return render(req, 'url.html', newUrls) 
+
+def show(req, id):
+    print('*************************')
+    print(id)
+    obj = Url.objects.get(_id=ObjectId(id))
+    newObj = {
+        "url": obj.url,
+        "mongo_id": obj._id
+    }
+
+    return render(req, 'test.html', {"url": newObj}) 
