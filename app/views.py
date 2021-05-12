@@ -3,6 +3,7 @@ from .models import Url
 from djongo import models
 from bson.objectid import ObjectId
 from .forms import NewUrlForm
+from django.contrib import messages
 
 # Create your views here.
 def parseObjIds(a):
@@ -24,12 +25,16 @@ def urls(req):
         return render(req, 'url.html', data) 
 
 def show(req, id):
-    obj = Url.objects.get(_id=ObjectId(id))
-    data = {
-        "url": obj.url,
-        "mongo_id": obj._id
-    }
-    return render(req, 'test.html', {"url": data}) 
+    try:
+        obj = Url.objects.get(_id=ObjectId(id))
+        data = {
+            "url": obj.url,
+            "mongo_id": obj._id
+        }
+        return render(req, 'test.html', {"url": data}) 
+    except:
+        return redirect("urls-all")
+
 
 def redirector(req, id):
     try:
@@ -37,8 +42,9 @@ def redirector(req, id):
         response = redirect(obj.url)
         return response
     except:
-        urls = list(Url.objects.all().values('url', '_id'))
-        form = NewUrlForm()
+        # urls = list(Url.objects.all().values('url', '_id'))
+        # form = NewUrlForm()
+        # trying to pass an error message with a redirect
         # data = {'urls' : map(parseObjIds, urls), 'form': form, 'err' : 'no shortended url found for that id, create one?'}
         # return render(req, 'url.html', data) 
         return redirect("urls-all")
