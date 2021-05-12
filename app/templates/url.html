@@ -7,13 +7,16 @@
     <input type="submit" value="Add Url">
 </form>
 <h1>Here are our urls!</h1>
-<ul>
+<ul class="urls">
     {% for url in urls %}
-    <li>
         <div>
-            {{ url.url }} {{ url.mongo_id }}
+           Website: {{ url.url }}
         </div>
-    </li>
+        <div>
+            <a href="{{ url.mongo_id }}">new URL: http//:localhost:8000/{{ url.mongo_id }}</a>
+        </div>
+        <br>
+        <br>
     {% endfor %}
 
 </ul>
