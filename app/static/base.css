@@ -27,8 +27,9 @@ form {
 
 .container {
     background: blue;
-    justify-content: center;
-    padding: -25%;
+    width: 75%; 
+    position: relative;
+    left: 200px;
 }
 
 a {
