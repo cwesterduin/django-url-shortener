@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Here are our urls!</h1>
 <p>{{ err }}</p>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Url">
+</form>
+<h1>Here are our urls!</h1>
 <ul>
     {% for url in urls %}
     <li>
