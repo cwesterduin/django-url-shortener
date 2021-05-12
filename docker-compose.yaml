@@ -1,0 +1,16 @@
+version: '3'
+services:
+  
+  db:
+    image: mongo:latest
+    ports: 
+        - 27017:27017
+    volumes:
+      - "dbdata:/var/lib/mongodb/data"
+      - "./db/seeds.js:/docker-entrypoint-initdb.d/seeds.js:ro"
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_DATABASE=mydb
+      - MONGO_INITDB_ROOT_PASSWORD=password
+volumes:
+  dbdata:

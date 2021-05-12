@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>URL Shortener</h1>
+<b>Welcome to URL shortener!</b><br>
+<b>Our app is simple, enter your URL into the form and click on the 'Add Url' button</b>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Url">
+</form>
+<ul class="urls">
+    {% for url in urls %}
+        <div>
+           Website: {{ url.url }}
+        </div>
+        <div>
+            <a href="{{ url.mongo_id }}">{{ request.get_host }}/{{ url.mongo_id }}</a>
+        </div>
+        <br>
+        <br>
+    {% endfor %}
+
+</ul>
+
+{% endblock content %}
