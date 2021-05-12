@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Here is your url!</h1>
-        <div>
-            {{ url.url }}  {{ url.mongo_id }}
-        </div>
+<h2>Here is your url!</h2>
+        <h3>
+            {{ request.get_host }}/{{ url.mongo_id }}
+        </h3>
+        <a href="/">HOME</a>
 
 {% endblock content %}
