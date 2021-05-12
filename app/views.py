@@ -12,7 +12,6 @@ def parseObjIds(a):
 
 def urls(req):
     urls = list(Url.objects.all().values('url', '_id'))
-    print(urls)
     newUrls = {'urls' : map(parseObjIds, urls)}
     return render(req, 'url.html', newUrls) 
 
@@ -27,6 +26,16 @@ def urls(req):
 #     return render(req, 'test.html', {"url": newObj}) 
 
 def redirector(req, id):
-    obj = Url.objects.get(_id=ObjectId(id))
-    response = redirect(obj.url)
-    return response
+    try:
+        obj = Url.objects.get(_id=ObjectId(id))
+        response = redirect(obj.url)
+        return response
+    except:
+        urls = list(Url.objects.all().values('url', '_id'))
+        newUrls = {'urls' : map(parseObjIds, urls), 'err' : 'no shortended url found for that id, create one?'}
+        return render(req, 'url.html', newUrls) 
+
+def not_found_404(req, exception):
+    urls = list(Url.objects.all().values('url', '_id'))
+    newUrls = {'urls' : map(parseObjIds, urls)}
+    return render(req, 'url.html', newUrls) 
